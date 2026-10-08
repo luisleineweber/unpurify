@@ -5,6 +5,7 @@ import { StatInput } from './components/StatInput';
 import { AdvancedCalculator } from './components/AdvancedCalculator';
 import { LanguageSelect } from './components/LanguageSelect';
 import { UsageStatistics } from './components/UsageStatistics';
+import { GitHubLink } from './components/GitHubLink';
 import { useLanguage } from './i18n/LanguageProvider';
 import { useUsageStatistics } from './hooks/useUsageStatistics';
 import { ivPercent, purify, readIVs, stats } from './lib/pokemon';
@@ -90,7 +91,7 @@ export default function App() {
     </main>
     <footer className="site-footer"><div className="site-footer-inner">
       <span className="footer-brand"><img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" width="28" height="28" /><span>unpurify<span className="brand-dot">.</span></span></span>
-      <div className="footer-right"><span>{t('gameData', { date: new Intl.DateTimeFormat(language).format(new Date(`${sources.updated}T12:00:00`)) })}</span><a href={sources.gameMaster} target="_blank" rel="noreferrer">{t('dataSource')} <ArrowUpRight size={14} aria-hidden="true" /></a><a href="https://github.com/luisleineweber/unpurify" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={14} aria-hidden="true" /></a></div>
+      <div className="footer-right"><span>{t('gameData', { date: new Intl.DateTimeFormat(language).format(new Date(`${sources.updated}T12:00:00`)) })}</span><a href={sources.gameMaster} target="_blank" rel="noreferrer">{t('dataSource')} <ArrowUpRight size={14} aria-hidden="true" /></a><GitHubLink /></div>
       <p className="footer-note">{t('credits')} <a href="https://wiki.pokemoncentral.it/Gengar" target="_blank" rel="noreferrer">Pokémon Central</a>. <a href={`${import.meta.env.BASE_URL}privacy.html`}>{t('usageStatisticsPrivacy')}</a>.</p>
       <UsageStatistics config={usageStatistics.config} enabled={usageStatistics.enabled}
         storageError={usageStatistics.storageError} onChange={usageStatistics.setEnabled} />

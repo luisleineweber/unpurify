@@ -158,6 +158,10 @@ details[open] > summary > svg:last-child { transform: rotate(180deg); }
 .footer-brand img { flex-shrink: 0; }
 .footer-right { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 0.8125rem; line-height: 1.7; }
 .footer-right a { display: inline-flex; align-items: center; gap: 4px; min-height: 32px; color: #c9bbdb; }
+.footer-right .github-link { gap: 8px; min-height: 44px; padding: 10px 14px; border: 1px solid #ffffff26; border-radius: 10px; background: #242334; color: #fff; font-weight: 600; white-space: nowrap; box-shadow: 0 1px 2px #0003, inset 0 1px 0 #ffffff06; }
+.github-link img { flex-shrink: 0; object-fit: contain; }
+.site-footer .github-link:hover { background: #302d42; border-color: #ffffff40; color: #fff; }
+.site-footer .github-link:active { background: #1a192a; }
 .footer-note { grid-column: 1 / -1; max-width: 80ch; font-size: 0.8125rem; line-height: 1.7; color: var(--muted); }
 .footer-note a { text-decoration: underline; text-underline-offset: 3px; }
 .site-footer a:hover { color: #eeedf5; }
