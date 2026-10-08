@@ -1,0 +1,25 @@
+.header-controls { display: flex; align-items: center; gap: 24px; min-width: 0; }
+.language-select { position: relative; flex-shrink: 0; }
+.language-trigger { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: #e1d5ef; font-size: 0.875rem; }
+.language-trigger:hover, .language-trigger[aria-expanded='true'] { border-color: #736086; background: #1e1936; }
+.language-flag { display: block; width: 24px; height: 18px; object-fit: cover; border-radius: 2px; flex-shrink: 0; outline: 1px solid #ffffff1a; }
+.language-trigger-chevron { color: var(--muted); }
+.language-menu { position: absolute; inset-block-start: calc(100% + 8px); inset-inline-end: 0; z-index: 10; width: min(268px, calc(100vw - 2 * var(--page-gutter))); max-height: min(420px, calc(100dvh - 104px)); overflow: auto; overscroll-behavior: contain; margin: 0; padding: 6px; list-style: none; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: 0 12px 32px #0006; }
+.language-option { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 10px 12px; border-radius: 6px; cursor: pointer; }
+.language-option:hover { background: #ffffff06; }
+.language-option[aria-selected='true'] { color: #e7d8ff; background: #b38cfb12; }
+.language-option:focus-visible { outline: 2px solid #ccafff; outline-offset: -2px; }
+.language-option-text { display: grid; flex: 1; gap: 2px; min-width: 0; font-size: 0.875rem; line-height: 1.4; }
+.language-option-detail { color: var(--muted); font-size: 0.8125rem; }
+@media (max-width: 960px) {
+  .header-controls { gap: 16px; }
+}
+@media (max-width: 740px) {
+  .header-controls { flex: 0 1 auto; margin-inline-start: auto; }
+  .language-trigger { width: 44px; padding: 10px; }
+  .language-trigger-name, .language-trigger-chevron { display: none; }
+}
+@media (forced-colors: active) {
+  .language-option:focus-visible { outline-color: Highlight; }
+  .language-option[aria-selected='true'] { outline: 1px solid Highlight; }
+}
