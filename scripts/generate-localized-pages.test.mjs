@@ -6,6 +6,8 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { languages, languagePath } from '../src/i18n/language.ts';
+import { calculatorQuestions } from '../src/i18n/calculator-content.ts';
+import { createTranslator } from '../src/i18n/translate.ts';
 import { de } from '../src/i18n/locales/de.ts';
 import { en } from '../src/i18n/locales/en.ts';
 import { es } from '../src/i18n/locales/es.ts';
@@ -42,15 +44,26 @@ for (const siteUrl of ['https://example.github.io/', 'https://example.github.io/
     for (const { code } of languages) {
       const path = code === 'en' ? 'index.html' : `${code}/index.html`;
       const html = await readFile(join(directory, 'dist', path), 'utf8');
+      const mainText = html.match(/<main>([\s\S]*?)<\/main>/)[1].replace(/<[^>]+>/g, ' ')
+        .replaceAll('&quot;', '"').replaceAll('&#39;', "'").replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&amp;', '&');
       const pageUrl = new URL(languagePath(code, base), siteUrl).href;
       assert.ok(html.includes(`<html lang="${code}">`));
       assert.ok(html.includes(`href="${pageUrl}"`));
       assert.ok(html.includes(messages[code].heroFirst));
+      assert.ok(html.includes(messages[code].guideTitle), `${code}: initial HTML must include the purification guide`);
+      assert.ok(html.includes(messages[code].ivGainDescription));
+      assert.ok(html.includes(messages[code].cpNotice));
+      for (const { question, answer } of calculatorQuestions) {
+        assert.ok(mainText.includes(createTranslator(code)(question)));
+        assert.ok(mainText.includes(createTranslator(code)(answer, { mode: messages[code].pokemonCP })));
+      }
+      assert.ok(html.includes(messages[code].calculatorNeedsJavaScript));
       assert.ok(html.includes(`${base}favicon.svg`));
-      assert.equal((html.match(/hreflang=/g) ?? []).length, 7);
+      assert.equal((html.match(/<link rel="alternate" hreflang=/g) ?? []).length, 7);
       for (const { code: alternate } of languages) {
         const alternateUrl = new URL(languagePath(alternate, base), siteUrl).href;
         assert.ok(html.includes(`hreflang="${alternate}" href="${alternateUrl}"`));
+        assert.ok(html.includes(`<a href="${alternateUrl}" hreflang="${alternate}"`), `${code}: missing crawlable ${alternate} link`);
       }
       const data = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
       assert.equal(data.inLanguage, code);

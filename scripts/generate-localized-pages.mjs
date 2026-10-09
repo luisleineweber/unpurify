@@ -1,5 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { languages } from '../src/i18n/language.ts';
+import { calculatorQuestions } from '../src/i18n/calculator-content.ts';
+import { createTranslator } from '../src/i18n/translate.ts';
 import { de } from '../src/i18n/locales/de.ts';
 import { en } from '../src/i18n/locales/en.ts';
 import { es } from '../src/i18n/locales/es.ts';
@@ -28,15 +30,6 @@ const openGraphLocales = {
   it: 'it_IT',
   ja: 'ja_JP',
 };
-const noScriptText = {
-  de: 'Aktiviere JavaScript, um den Rechner zu verwenden.',
-  en: 'Enable JavaScript to use the calculator.',
-  es: 'Activa JavaScript para usar la calculadora.',
-  fr: 'Activez JavaScript pour utiliser le calculateur.',
-  it: 'Attiva JavaScript per usare il calcolatore.',
-  ja: '計算ツールを使うにはJavaScriptを有効にしてください。',
-};
-
 const localePages = languages.map(({ code }) => {
   const messages = messagesByLanguage[code];
   if (!messages) throw new Error(`Missing translation data for ${code}.`);
@@ -70,12 +63,51 @@ function replaceOnce(html, pattern, replacement, label) {
 }
 
 function fallbackMarkup(messages, language) {
+  const t = createTranslator(language);
+  const guideItems = [
+    ['ivGainTitle', 'ivGainDescription'],
+    ['levelTitle', 'levelDescription'],
+    ['shadowTitle', 'shadowDescription'],
+  ].map(([title, description]) => `<article class="guide-item"><div><h3>${escapeHtml(messages[title])}</h3><p>${escapeHtml(messages[description])}</p></div></article>`).join('\n');
+  const questions = calculatorQuestions.map(({ question, answer }) =>
+    `<article><h3>${escapeHtml(t(question))}</h3><p>${escapeHtml(t(answer, { mode: messages.pokemonCP }))}</p></article>`,
+  ).join('\n');
+  const languageLinks = localePages.map(({ code, url }) => {
+    const name = languages.find((item) => item.code === code).name;
+    return `<a href="${url}" hreflang="${code}" lang="${code}"${code === language ? ' aria-current="page"' : ''}>${escapeHtml(name)}</a>`;
+  }).join('\n');
   return `<!-- localized-fallback-start -->
       <main>
-        <h1 id="page-title">${escapeHtml(messages.heroFirst)}<br />${escapeHtml(messages.heroSecond)}</h1>
-        <p>${escapeHtml(messages.intro)}</p>
-        <noscript><p>${escapeHtml(noScriptText[language])}</p></noscript>
+        <section class="intro" aria-labelledby="page-title"><div class="intro-content">
+          <h1 id="page-title">${escapeHtml(messages.heroFirst)}<br />${escapeHtml(messages.heroSecond)}</h1>
+          <p>${escapeHtml(messages.intro)}</p>
+        </div></section>
+        <section id="calculator" aria-label="${escapeHtml(messages.calculator)}">
+          <h2>${escapeHtml(messages.calculator)}</h2>
+          <h3>${escapeHtml(messages.enterIVs)}</h3>
+          <p>${escapeHtml(messages.inputDescription)}</p><p>${escapeHtml(messages.instructions)}</p>
+          <h3>${escapeHtml(messages.pokemonCP)}</h3>
+          <p>${escapeHtml(messages.advancedDescription)}</p><p>${escapeHtml(messages.cpNotice)}</p>
+          <noscript><p>${escapeHtml(messages.calculatorNeedsJavaScript)}</p></noscript>
+        </section>
+        <section class="guide-section" id="how-it-works" aria-labelledby="guide-heading">
+          <div class="guide-heading"><h2 id="guide-heading">${escapeHtml(messages.guideTitle)}</h2></div>
+          <div class="guide-grid">${guideItems}</div>
+          <details class="more-details"><summary>${escapeHtml(messages.detailsTitle)}</summary>
+            <div class="details-content"><p>${escapeHtml(messages.movesDescription)}</p>
+              <p>${escapeHtml(messages.costsDescription)}</p><p>${escapeHtml(messages.battleDescription)}</p>
+              <a href="https://niantic.helpshift.com/hc/${language}/6-pokemon-go/faq/2396-shadow-pokemon-purified-pokemon/">${escapeHtml(messages.pokemonHelp)}</a>
+            </div>
+          </details>
+        </section>
+        <section class="guide-section" aria-labelledby="questions-heading">
+          <div class="guide-heading"><h2 id="questions-heading">${escapeHtml(messages.purificationQuestionsTitle)}</h2></div>
+          <div class="question-list">${questions}</div>
+        </section>
       </main>
+      <footer class="site-footer"><div class="site-footer-inner">
+        <nav class="language-links" aria-label="${escapeHtml(messages.language)}">${languageLinks}</nav>
+      </div></footer>
       <!-- localized-fallback-end -->`;
 }
 

@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import { readAnalyticsConfig } from './src/lib/analytics.ts';
+import { en } from './src/i18n/locales/en.ts';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', 'VITE_');
@@ -9,7 +10,7 @@ export default defineConfig(({ mode }) => {
   const basePath = env.VITE_BASE_PATH?.replace(/^\/+|\/+$/g, '');
   const base = basePath ? `/${basePath}/` : '/';
   const siteUrl = env.VITE_SITE_URL?.replace(/\/+$/, '');
-  const description = 'Compare Shadow Pokémon IVs before and after purification. Calculate purified CP and find possible IV combinations from species and CP.';
+  const description = en.pageDescription;
   const structuredData = siteUrl ? JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
