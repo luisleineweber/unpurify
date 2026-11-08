@@ -36,8 +36,8 @@ h1, h2, h3, p { margin: 0; }
 svg { flex-shrink: 0; vertical-align: middle; }
 ::selection { color: #fff; background: #62428f; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-.skip-link { position: fixed; top: 12px; left: 16px; padding: 12px 18px; background: #b38cfb; color: #141019; border-radius: 8px; z-index: 20; transform: translateY(-200%); }
-.skip-link:focus { transform: translateY(0); }
+.skip-link { position: fixed; top: 12px; left: 16px; padding: 12px 18px; background: #b38cfb; color: #141019; border-radius: 8px; z-index: 20; transform: translateY(-200%); opacity: 0; pointer-events: none; }
+.skip-link:focus { transform: translateY(0); opacity: 1; pointer-events: auto; }
 main, .site-header-inner, .site-footer-inner { width: calc(100% - 2 * var(--page-gutter)); max-width: var(--page-width); margin-inline: auto; }
 .site-header { background: var(--chrome); border-bottom: 1px solid #ffffff0b; }
 .site-header-inner { min-height: 80px; padding-block: 16px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }

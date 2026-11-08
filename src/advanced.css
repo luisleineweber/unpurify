@@ -56,10 +56,10 @@
 .candidate-detail { padding: 18px 20px 20px; border-top: 1px solid #9b78c533; }
 .candidate-detail-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-block-end: 20px; color: #dcc2ff; font-size: 0.8125rem; }
 .candidate-detail-heading > span { margin-inline-start: auto; color: #a3d9bf; font-size: 0.875rem; }
-.candidate-detail .comparison { max-width: 720px; }
+.candidate-detail .comparison { width: 100%; }
 .empty-result { color: #c6b7d8; line-height: 1.8; font-size: 0.875rem; margin-block-start: 16px; }
 @container (max-width: 40rem) {
-  .candidate-choice { grid-template-columns: 20px repeat(4, minmax(0, 1fr)) 18px; gap: 14px 12px; }
+  .candidate-choice { grid-template-columns: 20px repeat(4, minmax(0, 1fr)) 18px; gap: 10px 12px; }
   .candidate-choice input { grid-column: 1; grid-row: 1; }
   .candidate-ivs { grid-column: 2 / 6; grid-row: 1; }
   .candidate-selection { grid-column: 6; grid-row: 1; }

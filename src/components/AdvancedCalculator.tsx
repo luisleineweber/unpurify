@@ -22,11 +22,11 @@ export function AdvancedCalculator({ onSearch }: { onSearch: (species: Pick<Spec
   const [result, setResult] = useState<Result<SearchResult> | null>(null);
   const [errorField, setErrorField] = useState<string | null>(null);
   const [selected, setSelected] = useState<Candidate | null>(null);
-  const [limit, setLimit] = useState(12);
+  const [limit, setLimit] = useState(5);
   const selectedSpecies = useMemo(() => findSpecies(query.text, species, query.language), [query]);
   const pokemon = selectedSpecies ? speciesName(selectedSpecies, language) : query.text;
 
-  function invalidate() { setResult(null); setErrorField(null); setSelected(null); setLimit(12); }
+  function invalidate() { setResult(null); setErrorField(null); setSelected(null); setLimit(5); }
   function showError(error: CalculationError) {
     const field = error.code === 'invalid-iv' ? `known-${error.stat}` : {
       'invalid-species': 'pokemon-search', 'invalid-cp': 'cp', 'invalid-hp': 'hp', 'invalid-level': 'level',
@@ -39,7 +39,7 @@ export function AdvancedCalculator({ onSearch }: { onSearch: (species: Pick<Spec
   }
   function calculate(event: React.FormEvent) {
     event.preventDefault();
-    setSelected(null); setErrorField(null); setLimit(12);
+    setSelected(null); setErrorField(null); setLimit(5);
     if (!selectedSpecies) {
       showError({ code: 'invalid-species' });
       return;
@@ -100,6 +100,6 @@ export function AdvancedCalculator({ onSearch }: { onSearch: (species: Pick<Spec
       {result && !result.ok && <p className="field-error" id="advanced-error" role="alert">{errorText(result.error)}</p>}
     </section>
     {result?.ok && <CandidateResults species={result.value.species} cp={result.value.cp} candidates={result.value.candidates}
-      selected={selected} limit={limit} onSelect={setSelected} onShowMore={() => setLimit((current) => current + 24)} />}
+      selected={selected} limit={limit} onSelect={setSelected} onShowMore={() => setLimit((current) => current + 5)} />}
   </>;
 }
