@@ -101,11 +101,10 @@ h2 { font-family: 'Outfit Variable', sans-serif; font-size: 1.25rem; font-weight
 .calculator-grid > .comparison { display: flex; flex-direction: column; padding: 26px 24px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; }
 .calculator-grid > .comparison .result-heading { min-height: 36px; padding: 0; margin-block-end: 22px; }
 .calculator-grid > .comparison .comparison-cards { flex: 1; }
-.pokemon-result { display: flex; flex-direction: column; }
-.result-footnote { margin-block-start: auto; }
+.pokemon-result { display: grid; grid-template-rows: subgrid; grid-row: span 5; row-gap: 0; }
 .comparison { min-width: 0; padding-block: 4px 0; container-type: inline-size; }
 .result-heading { padding-block: 0 16px; }
-.comparison-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; position: relative; }
+.comparison-cards { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto 1fr auto; gap: 14px; position: relative; }
 .pokemon-result { padding: 24px 22px 18px; border-radius: 13px; border: 1px solid #493462; background: linear-gradient(145deg, #2b223c, #201b2b); min-width: 0; }
 .purified-result { border-color: #34514d; background: linear-gradient(145deg, #203733, #192a29); }
 .state-label { display: inline-flex; align-items: center; gap: 6px; font-size: 0.875rem; color: #c9a4f7; }
