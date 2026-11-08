@@ -93,6 +93,7 @@ export function PokemonSelect({ species, value, invalid, onChange }: Props) {
           else browse();
         }}><ChevronDown size={18} aria-hidden="true" /></button>
     </div>
+    <p className="field-hint input-hint" id="species-help">{t('speciesHint')}</p>
     {open && <div className="pokemon-dropdown">
       <div className="pokemon-dropdown-heading"><span>{t('choosePokemon')}</span><span>{t('pokemonMatches', { count: number(options.length) })}</span></div>
       <ul id={listId} className="pokemon-options" role="listbox" aria-label={t('pokemon')}>

@@ -77,7 +77,6 @@ export function AdvancedCalculator({ onSearch }: { onSearch: (species: Pick<Spec
             <p className="field-hint input-hint" id="hp-help">{t('hpHint')}</p>
           </div>
         </div>
-        <p className="field-hint" id="species-help">{t('speciesHint')}</p>
         <details className="advanced-filters"><summary><SlidersHorizontal size={16} aria-hidden="true" />{t('narrowSearch')}<ChevronDown size={16} aria-hidden="true" /></summary>
           <div className="filter-grid"><div className="form-field"><label htmlFor="level">{t('pokemonLevel')}</label>
             <select id="level" value={level} aria-invalid={errorField === 'level'} aria-describedby={errorField === 'level' ? 'advanced-error' : undefined}
