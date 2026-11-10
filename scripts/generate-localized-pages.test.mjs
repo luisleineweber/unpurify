@@ -36,7 +36,7 @@ function generate(directory, siteUrl) {
 }
 
 for (const siteUrl of ['https://example.github.io/', 'https://example.github.io/unpurify/']) {
-  test(`release pages contain six language links and correct metadata at ${siteUrl}`, async () => {
+  test(`release pages contain language metadata without footer links at ${siteUrl}`, async () => {
     const { directory } = await fixture(siteUrl);
     const result = generate(directory, siteUrl);
     assert.equal(result.status, 0, result.stderr);
@@ -63,8 +63,8 @@ for (const siteUrl of ['https://example.github.io/', 'https://example.github.io/
       for (const { code: alternate } of languages) {
         const alternateUrl = new URL(languagePath(alternate, base), siteUrl).href;
         assert.ok(html.includes(`hreflang="${alternate}" href="${alternateUrl}"`));
-        assert.ok(html.includes(`<a href="${alternateUrl}" hreflang="${alternate}"`), `${code}: missing crawlable ${alternate} link`);
       }
+      assert.ok(!html.includes('class="language-links"'), `${code}: footer language links must stay removed`);
       const data = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
       assert.equal(data.inLanguage, code);
       assert.equal(data.url, pageUrl);

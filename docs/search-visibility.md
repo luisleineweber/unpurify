@@ -103,3 +103,8 @@ make a page crawl sooner. Google states that crawling can take days or weeks.
 References: [Google recrawl guidance](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl),
 [site search limits](https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site),
 [JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics).
+
+## Footer update - 10 November 2026
+
+Removed the duplicate footer language links. The header language control remains.
+Release pages keep all language alternate tags and sitemap entries.
