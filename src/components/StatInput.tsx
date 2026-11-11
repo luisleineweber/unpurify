@@ -29,7 +29,6 @@ export function StatInput({ stat, label, value, onChange }: {
       <input className="iv-slider" aria-label={t('statSlider', { stat: label })} type="range" min="0" max="15" step="1"
         value={amount} onChange={(event) => onChange(event.target.value)}
         style={{ '--fill': `${amount / 15 * 100}%` } as React.CSSProperties} />
-      <div className="range-labels" aria-hidden="true"><span>0</span><span>5</span><span>10</span><span>15</span></div>
       {!valid && <p className="field-error" id={`${stat}-error`}>{t('invalidIV')}</p>}
     </div>
   );

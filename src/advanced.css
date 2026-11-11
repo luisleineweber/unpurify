@@ -14,31 +14,31 @@
 .pokemon-list-toggle:hover { color: #ecdcff; background: #b38cfb10; }
 .search-field:has([aria-expanded='true']) .pokemon-list-toggle svg { transform: rotate(180deg); }
 .pokemon-dropdown { position: absolute; inset-block-start: calc(100% + 8px); inset-inline: 0; z-index: 10; border: 1px solid #66547e; border-radius: 12px; background: #201c35; box-shadow: 0 8px 20px #0003, 0 20px 48px #0004; overflow: hidden; }
-.pokemon-dropdown-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; color: #c8b6df; font-size: 0.75rem; border-bottom: 1px solid #b38cfb20; }
+.pokemon-dropdown-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; color: #c8b6df; font-size: 0.875rem; border-bottom: 1px solid #b38cfb20; }
 .pokemon-dropdown-heading > span:last-child { color: #b3a6c3; font-variant-numeric: tabular-nums; }
 .pokemon-options { list-style: none; padding: 5px; margin: 0; max-height: 18rem; overflow-y: auto; overscroll-behavior: contain; scrollbar-color: #715584 transparent; }
 .pokemon-option { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 10px; border-radius: 7px; cursor: pointer; font-size: 0.875rem; color: #e7ddf4; }
 .pokemon-option[aria-selected='true'] { background: #49355f; }
-.pokemon-option-dex { color: #b3a6c3; font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+.pokemon-option-dex { color: #b3a6c3; font-size: 0.875rem; font-variant-numeric: tabular-nums; }
 .pokemon-option-name { flex: 1; overflow-wrap: anywhere; }
 .pokemon-option-chosen { color: #e0c4ff; }
 .pokemon-option > svg { flex-shrink: 0; }
 .pokemon-no-match { color: #c8b6df; font-size: 0.875rem; line-height: 1.7; padding: 12px 15px 17px; }
-.optional-label { color: #b3a6c3; font-size: 0.75rem; font-weight: 400; margin-inline-start: 5px; }
+.optional-label { color: #b3a6c3; font-size: 0.875rem; font-weight: 400; margin-inline-start: 5px; }
 .form-field .input-hint { margin: 0; }
-.field-hint { font-size: 0.75rem; color: #b3a6c3; line-height: 1.8; margin-block: 10px 0; }
+.field-hint { font-size: 0.875rem; color: #b3a6c3; line-height: 1.8; margin-block: 10px 0; }
 .advanced-filters { margin-block: 23px; border-top: 1px solid #3a313f; border-bottom: 1px solid #3a313f; padding-block: 14px; }
 .advanced-filters > summary { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; font-size: 0.875rem; color: #c1aed8; min-height: 25px; }
 .filter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-block: 20px 0; }
 .known-ivs { grid-template-columns: repeat(3, 1fr); }
 .primary-button, .secondary-button { border: 1px solid #b595df; border-radius: 8px; color: #221531; background: #c2a0ef; min-height: 46px; padding: 11px 18px; display: inline-flex; align-items: center; gap: 9px; font-size: 0.875rem; font-weight: 600; }
 .primary-button:hover { background: #d0b2f5; }
-.secondary-button { color: #d6b6fe; background: #352640; border-color: #64497b; font-size: 0.75rem; margin-block-start: 16px; }
+.secondary-button { color: #d6b6fe; background: #352640; border-color: #64497b; font-size: 0.875rem; margin-block-start: 16px; }
 .secondary-button:hover { background: #41304d; }
 .advanced-notice { display: flex; align-items: flex-start; gap: 9px; color: #b7a7c6; margin-block-start: 18px; }
 .advanced-notice .info-symbol { margin-block-start: 4px; }
-.advanced-notice p { font-size: 0.75rem; line-height: 1.8; }
-.muted { color: #b4a6c3; font-size: 0.75rem; }
+.advanced-notice p { font-size: 0.875rem; line-height: 1.8; }
+.muted { color: #b4a6c3; font-size: 0.875rem; }
 .candidate-panel { container-type: inline-size; }
 .candidate-list { display: grid; gap: 10px; min-width: 0; border: 0; margin: 0; padding: 0; }
 .candidate-option { min-width: 0; border: 1px solid #3c344d; border-radius: 10px; background: #1c1931; }
@@ -49,17 +49,17 @@
 .candidate-choice input { width: 20px; height: 20px; margin: 0; accent-color: #c2a0ef; color-scheme: dark; cursor: pointer; }
 .candidate-ivs, .candidate-metric { display: grid; gap: 5px; min-width: 0; }
 .candidate-value { color: #e5d9f1; font-size: 0.875rem; font-weight: 600; font-variant-numeric: tabular-nums; }
-.candidate-caption { color: #b3a6c3; font-size: 0.75rem; line-height: 1.5; }
+.candidate-caption { color: #b3a6c3; font-size: 0.875rem; line-height: 1.5; }
 .purified-cell .candidate-value { color: #a3d9bf; }
 .candidate-selection { display: grid; place-items: center; color: #b8a2d0; }
 .candidate-selected .candidate-selection { color: #dcc2ff; }
 .candidate-detail { padding: 18px 20px 20px; border-top: 1px solid #9b78c533; }
 .candidate-detail-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-block-end: 20px; color: #dcc2ff; font-size: 0.8125rem; }
-.candidate-detail-heading > span { margin-inline-start: auto; color: #a3d9bf; font-size: 0.75rem; }
-.candidate-detail .comparison { max-width: 720px; }
+.candidate-detail-heading > span { margin-inline-start: auto; color: #a3d9bf; font-size: 0.875rem; }
+.candidate-detail .comparison { width: 100%; }
 .empty-result { color: #c6b7d8; line-height: 1.8; font-size: 0.875rem; margin-block-start: 16px; }
 @container (max-width: 40rem) {
-  .candidate-choice { grid-template-columns: 20px repeat(4, minmax(0, 1fr)) 18px; gap: 14px 12px; }
+  .candidate-choice { grid-template-columns: 20px repeat(4, minmax(0, 1fr)) 18px; gap: 10px 12px; }
   .candidate-choice input { grid-column: 1; grid-row: 1; }
   .candidate-ivs { grid-column: 2 / 6; grid-row: 1; }
   .candidate-selection { grid-column: 6; grid-row: 1; }
@@ -92,7 +92,7 @@
   .advanced-panel, .candidate-panel { padding: 19px; }
   .filter-grid { grid-template-columns: 1fr; }
   .known-ivs { grid-template-columns: repeat(3, 1fr); gap: 9px; }
-  .known-ivs label { font-size: 0.75rem; }
+  .known-ivs label { font-size: 0.875rem; }
   .known-ivs input { padding-inline: 8px; }
   .primary-button { width: 100%; justify-content: center; }
   .candidate-panel .panel-heading { align-items: flex-start; flex-direction: column; gap: 6px; }

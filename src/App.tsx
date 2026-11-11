@@ -4,7 +4,6 @@ import { CompactResult, Comparison } from './components/Comparison';
 import { StatInput } from './components/StatInput';
 import { AdvancedCalculator } from './components/AdvancedCalculator';
 import { LanguageSelect } from './components/LanguageSelect';
-import { LanguageLinks } from './components/LanguageLinks';
 import { CalculatorQuestions } from './components/CalculatorQuestions';
 import { UsageStatistics } from './components/UsageStatistics';
 import { GitHubLink } from './components/GitHubLink';
@@ -96,7 +95,6 @@ export default function App() {
       <span className="footer-brand"><img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" width="28" height="28" /><span>unpurify<span className="brand-dot">.</span></span></span>
       <div className="footer-right"><span>{t('gameData', { date: new Intl.DateTimeFormat(language).format(new Date(`${sources.updated}T12:00:00`)) })}</span><a href={sources.gameMaster} target="_blank" rel="noreferrer">{t('dataSource')} <ArrowUpRight size={14} aria-hidden="true" /></a><GitHubLink /></div>
       <p className="footer-note">{t('credits')} <a href="https://wiki.pokemoncentral.it/Gengar" target="_blank" rel="noreferrer">Pokémon Central</a>. <a href={`${import.meta.env.BASE_URL}privacy.html`}>{t('usageStatisticsPrivacy')}</a>.</p>
-      <LanguageLinks />
       <UsageStatistics config={usageStatistics.config} enabled={usageStatistics.enabled}
         storageError={usageStatistics.storageError} onChange={usageStatistics.setEnabled} />
       </div>

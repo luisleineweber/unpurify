@@ -72,10 +72,6 @@ function fallbackMarkup(messages, language) {
   const questions = calculatorQuestions.map(({ question, answer }) =>
     `<article><h3>${escapeHtml(t(question))}</h3><p>${escapeHtml(t(answer, { mode: messages.pokemonCP }))}</p></article>`,
   ).join('\n');
-  const languageLinks = localePages.map(({ code, url }) => {
-    const name = languages.find((item) => item.code === code).name;
-    return `<a href="${url}" hreflang="${code}" lang="${code}"${code === language ? ' aria-current="page"' : ''}>${escapeHtml(name)}</a>`;
-  }).join('\n');
   return `<!-- localized-fallback-start -->
       <main>
         <section class="intro" aria-labelledby="page-title"><div class="intro-content">
@@ -105,9 +101,6 @@ function fallbackMarkup(messages, language) {
           <div class="question-list">${questions}</div>
         </section>
       </main>
-      <footer class="site-footer"><div class="site-footer-inner">
-        <nav class="language-links" aria-label="${escapeHtml(messages.language)}">${languageLinks}</nav>
-      </div></footer>
       <!-- localized-fallback-end -->`;
 }
 

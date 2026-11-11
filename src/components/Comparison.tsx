@@ -77,11 +77,11 @@ export function CompactResult({ result }: { result: Result<IVs> }) {
     <div className="compact-result-card purified-result">
       <span className="state-label"><Sparkles size={14} aria-hidden="true" />{t('purified')}</span>
       <div className="iv-percent">{formatPercent(ivPercent(purified))}<span>%</span></div>
-      <div className="sr-only"><Rating ivs={purified} /></div>
-      <div className="compact-iv-gain" title={`${t('ivGain')}: ${t('percentagePoints', { gain })}`}>
-        <span aria-hidden="true">{t('percentagePointsShort', { gain })}</span>
-        <span className="sr-only">{t('ivGain')}: {t('percentagePoints', { gain })}</span>
-      </div>
+      <Rating ivs={purified} />
+    </div>
+    <div className="compact-iv-gain">
+      <span>{t('ivGain')}</span>
+      <strong>{t('percentagePoints', { gain })}</strong>
     </div>
   </section>;
 }
